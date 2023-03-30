@@ -1,0 +1,20 @@
+<h1>Ingregar Al Sistema</h1>
+<!-- porque es reactivo se usa [] para mandar el nombre -->
+
+<!-- | json para convertir a json -->
+<pre
+  >{{ loginForm.value | json }}
+</pre>
+
+<p>{{loginForm.valid}}</p>
+<!-- un reactivo genera un json, listo para enviar al backend -->
+<form [formGroup]="loginForm">
+  <!-- con el formControlName se identifica el nombre creado en login.component.ts -->
+  <label for="">Ingrese su correo</label>
+  <input type="email" formControlName="email" /> <br />
+  <label for="">Ingrese su contraseña</label>
+  <input type="password" formControlName="password" />
+  <br />
+  <!-- para validar el form -->
+  <button type="submit" [disabled]="!loginForm.valid" (click)="ingresar()"> Enviar</button>
+</form>
