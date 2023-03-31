@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 // importando cosas del formlario reactivo
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 
@@ -23,7 +24,7 @@ export class LoginComponent {
   });
 
   // ya esta inyectado en login
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router : Router) {}
 
   ingresar() {
     let datos = {
@@ -32,10 +33,17 @@ export class LoginComponent {
     };
     this.authService.loginConNode(datos).subscribe(
       (res: any) => {
+        // aqui llega el token
         console.log(res);
+        // guardar el token, en este caso se guardara en el navegador
+        // para guardar en local storage
+        localStorage.setItem('access_token', res.access_token);        
+        this.router.navigate(['/admin/perfil']); // para redireccionar
+
       },
       (error: any) => {
         console.log(error);
+        alert('Credenciales Incorrectas');
       }
     );
   }
