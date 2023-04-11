@@ -1,0 +1,45 @@
+<div class="card">
+    <h2>Gestion de Categorias</h2>
+
+    
+<p-button (click)="showDialog()" icon="pi pi-external-link" label="Nueva Categoria"></p-button>
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <!-- <input type="text" pInputText formControlName="nombre"/> -->
+    {{categoriaForm.value | json}}
+
+    <form [formGroup]="categoriaForm">
+        <!-- con el formControlName se identifica el nombre creado en login.component.ts -->
+        <label for="">Ingrese Nombre</label>
+        <input type="text" pInputText formControlName="nombre" /> <br />
+        <label for="">Ingrese el detalle</label>
+        <input type="text" pInputText formControlName="detalle" />
+        <br />
+        <!-- para validar el form -->
+        <button type="submit"  [disabled]="!categoriaForm.valid" (click)="guardarCategoria()"> Enviar</button>
+      </form>
+      
+</p-dialog>
+    <p-table [value]="categorias" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>DETALLE</th>
+                <th>ACCION</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-dato>
+            <tr>
+                <td>{{ dato.id }}</td>
+                <td>{{ dato.nombre }}</td>
+                <td>{{ dato.detalle }}</td>
+                <td>
+                    <button pButton pRipple label="editar" icon="pi pi-pencil" (click)="editarCategoria(dato)" ></button>
+                    <button pButton pRipple label="eliminar" icon="pi pi-trash" (click)="eliminarCategoria(dato.id)" ></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    
+</div>
+
