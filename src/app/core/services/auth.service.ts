@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 interface User {
@@ -18,13 +19,14 @@ export class AuthService {
   // ahora hay que hacer los metodos
   // indicando el formado de datos otra forma es poner datos : any
 
+  url_servidor = environment.servidor;
   // en este caso es una interfaz
   loginConNode(datos: User) {
-    return this.http.post('http://127.0.0.1:3000/api/auth/login', datos);
+    return this.http.post(`${this.url_servidor}/auth/login`, datos);
   }
 
   
   getPerfil(){
-    return this.http.get("http://127.0.0.1:3000/api/auth/perfil"); // es la ruta del backend
+    return this.http.get(`${this.url_servidor}/auth/perfil`); // es la ruta del backend
   }
 }

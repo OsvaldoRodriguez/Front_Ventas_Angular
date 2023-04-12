@@ -11,10 +11,16 @@ import {DialogModule} from 'primeng/dialog'
 import {ButtonModule} from 'primeng/button'
 import { InputTextModule } from 'primeng/inputtext';
 import {ReactiveFormsModule } from '@angular/forms';
+import { ProductoComponent } from './components/producto/producto.component';
+import {ToastModule} from 'primeng/toast';
+import {ToolbarModule} from 'primeng/toolbar';
+import {FileUploadModule} from 'primeng/fileupload';
+
 @NgModule({
   declarations: [
     PerfilComponent,
-    CategoriaComponent
+    CategoriaComponent,
+    ProductoComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +30,11 @@ import {ReactiveFormsModule } from '@angular/forms';
     DialogModule,
     ButtonModule,
     InputTextModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule,
+    ToolbarModule,
+    FileUploadModule,
+    
     
     // AppLayoutModule // importando el template se importo en la raiz app.module
   ]
