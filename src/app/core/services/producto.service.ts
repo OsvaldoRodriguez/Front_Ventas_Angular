@@ -10,8 +10,8 @@ export class ProductoService {
   
   constructor(private http : HttpClient) { }
 
-  listar(page=1, limit=5, q='', categoria_id = 6){
-    return this.http.get(`${this.url_servidor}/v1/producto?page=${page}&limit=${limit}&q=${q}&categoria_id=${categoria_id}`);
+  listar(page=1, limit=1, q=''){
+    return this.http.get(`${this.url_servidor}/v1/producto?page=${page}&limit=${limit}&q=${q}`);
   }
 
   guardar(datos : any){

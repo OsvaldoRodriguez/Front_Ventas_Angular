@@ -15,7 +15,9 @@ import { ProductoComponent } from './components/producto/producto.component';
 import {ToastModule} from 'primeng/toast';
 import {ToolbarModule} from 'primeng/toolbar';
 import {FileUploadModule} from 'primeng/fileupload';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { InputNumberModule } from 'primeng/inputnumber';
+import {InputTextareaModule} from 'primeng/inputtextarea'
 @NgModule({
   declarations: [
     PerfilComponent,
@@ -34,6 +36,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     ToastModule,
     ToolbarModule,
     FileUploadModule,
+    RadioButtonModule,
+    InputNumberModule,
+    InputTextareaModule
     
     
     // AppLayoutModule // importando el template se importo en la raiz app.module

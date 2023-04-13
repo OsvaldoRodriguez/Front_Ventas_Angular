@@ -3,7 +3,7 @@
 
     
 <p-button (click)="showDialog()" icon="pi pi-external-link" label="Nueva Categoria"></p-button>
-<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+<p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false" styleClass="p-fluid">
     <!-- <input type="text" pInputText formControlName="nombre"/> -->
     {{categoriaForm.value | json}}
 
