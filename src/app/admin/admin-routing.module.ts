@@ -4,7 +4,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { AppLayoutComponent } from '../layout/app.layout.component';
 import { CategoriaComponent } from './components/categoria/categoria.component';
 import { ProductoComponent } from './components/producto/producto.component';
-
+import { ListaPedidoComponent } from './components/pedido/lista-pedido/lista-pedido.component';
+import { NuevoPedidoComponent } from './components/pedido/nuevo-pedido/nuevo-pedido.component';
 const routes: Routes = [
   // para admin
   {
@@ -23,6 +24,14 @@ const routes: Routes = [
       {
         path : 'producto',
         component : ProductoComponent
+      },
+      {
+        path: 'pedido',
+        component: ListaPedidoComponent
+      },
+      {
+        path: 'pedido/nuevo',
+        component: NuevoPedidoComponent
       }
     ]
   },

@@ -10,7 +10,7 @@ export class ProductoService {
   
   constructor(private http : HttpClient) { }
 
-  listar(page=1, limit=1, q=''){
+  listar(page=2, limit=3, q=''){
     return this.http.get(`${this.url_servidor}/v1/producto?page=${page}&limit=${limit}&q=${q}`);
   }
 
@@ -29,5 +29,9 @@ export class ProductoService {
 
   eliminar(id : number){
     return this.http.delete(`${this.url_servidor}/v1/producto/${id}`);
+  }
+
+  actualizarImagen(id : number, formData : any){
+    return this.http.post(`${this.url_servidor}/v1/producto/${id}/actualizar-imagen`, formData);
   }
 }

@@ -19,11 +19,15 @@ export class ProductoComponent implements OnInit {
   products!: any[]; // deberian ser interfaz
   product: any; // igual
   categorias: any;
-  selectedProducts: any = [];
+  selectedProducts: any[] | null = [];
   submitted: boolean = false;
   statuses: any = [];
   loading: boolean = false; // es la animacion del cargado en la tabla lazy
   totalRecords: number = 0; // para controlar cuantos datos  son en total
+
+  // imagen
+  displayModalImage: boolean = false;
+  uploadedFiles: any[] = [];
 
   productoForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
@@ -40,6 +44,11 @@ export class ProductoComponent implements OnInit {
     private categoriaService: CategoriaService
   ) {}
 
+  showModalDialogImage(product: any) {
+    this.product = { ...product };
+    this.displayModalImage = true;
+  }
+
   ngOnInit() {
     this.getProductos();
     this.getCategorias();
@@ -55,7 +64,7 @@ export class ProductoComponent implements OnInit {
     this.loading = true; // animacion para que muestre mientras carga los datos
 
     let page: any = 1;
-    let limit: any = 2;
+    let limit: any;
     if (event?.first && event?.rows) {
       page = event.first / event.rows + 1;
       limit = event.rows;
@@ -63,9 +72,9 @@ export class ProductoComponent implements OnInit {
     this.productService.listar(page, limit).subscribe(
       (datos: any) => {
         this.products = datos.rows;
-        console.log(datos.rows);
-        this.loading = false;
+        // console.log(datos.rows);
         this.totalRecords = datos.count;
+        this.loading = false;
       },
       (error: any) => {
         console.log(error);
@@ -124,9 +133,8 @@ export class ProductoComponent implements OnInit {
     this.submitted = true;
 
     if (this.product.id) {
-    //   alert('llega a editar');
-    
-        
+      //   alert('llega a editar');
+
       this.products[this.findIndexById(this.product.id)] = this.product;
       this.messageService.add({
         severity: 'success',
@@ -184,5 +192,35 @@ export class ProductoComponent implements OnInit {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return id;
+  }
+
+  onUpload(event?: any) {
+    for (let file of event.files) {
+      console.log(file);
+      this.uploadedFiles.push(file);
+    }
+
+    this.messageService.add({
+      severity: 'info',
+      summary: 'File Uploaded',
+      detail: '',
+    });
+  }
+
+
+  
+  myUploader(event? : any){
+    let formData = new FormData();
+    console.log(event.files)
+    formData.append('imagen', event.files[0]);
+
+    this.productService.actualizarImagen(this.product.id, formData).subscribe( (res : any) => {
+      this.displayModalImage = false;
+      this.getProductos();
+      this.messageService.add({ severity: 'info', summary: 'Imagen Actualizada', detail: '' });
+    }, (error : any) => {
+      
+      this.messageService.add({ severity: 'info', summary: 'Imagen No actualizada', detail: '' });
+    } )
   }
 }

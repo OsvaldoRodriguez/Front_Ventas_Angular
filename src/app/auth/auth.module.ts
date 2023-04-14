@@ -7,7 +7,8 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '../core/core.module';
-
+import { PasswordModule } from "primeng/password"
+import { ButtonModule } from "primeng/button"
 
 @NgModule({
   // aqui se declara los componentes
@@ -23,7 +24,9 @@ import { CoreModule } from '../core/core.module';
     ReactiveFormsModule,
     // HttpClientModule,
     // es importante
-    CoreModule
+    CoreModule,
+    PasswordModule,
+    ButtonModule
   ],
 })
 export class AuthModule { }

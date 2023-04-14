@@ -17,12 +17,12 @@ import {ToolbarModule} from 'primeng/toolbar';
 import {FileUploadModule} from 'primeng/fileupload';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
-import {InputTextareaModule} from 'primeng/inputtextarea'
+import {InputTextareaModule} from 'primeng/inputtextarea';
 @NgModule({
   declarations: [
     PerfilComponent,
     CategoriaComponent,
-    ProductoComponent
+    ProductoComponent,
   ],
   imports: [
     CommonModule,

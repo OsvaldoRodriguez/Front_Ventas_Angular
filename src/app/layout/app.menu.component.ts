@@ -46,8 +46,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Gestion Pedidos',
                 items: [
-                    { label: 'Nuevo Pedido', icon: 'pi pi-fw pi-eye', routerLink: ['/pedido/nuevo'], badge: 'NEW' },
-                    { label: 'Lista Pedidos', icon: 'pi pi-fw pi-globe', url: ['https://www.primefaces.org/primeblocks-ng'], target: '_blank' },
+                    { label: 'Nuevo Pedido', icon: 'pi pi-fw pi-eye', routerLink: ['/admin/pedido/nuevo'], badge: 'NEW' },
+                    { label: 'Lista Pedidos', icon: 'pi pi-fw pi-globe', routerLink: ['/admin/pedido'] },
                 ]
             },
             {
